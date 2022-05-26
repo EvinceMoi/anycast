@@ -1,0 +1,6 @@
+find_path(URING_INCLUDE_DIR NAMES liburing/io_uring.h)
+mark_as_advanced(URING_INCLUDE_DIR)
+
+include(FindPackageHandleStandardArgs)
+# find_package_handle_standard_args(uring REQUIRED_VARS URING_LIBRARY URING_INCLUDE_DIR)
+find_package_handle_standard_args(uring DEFAULT_MSG URING_LIBRARY URING_INCLUDE_DIR)
