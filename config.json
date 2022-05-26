@@ -1,0 +1,12 @@
+{
+	"relay_only": false,
+	"listen": [
+		"127.0.0.1:10080"
+	],
+	"upstreams": [
+		{
+			"host": "127.0.0.1",
+			"port": 1080
+		}
+	]
+}
