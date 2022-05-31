@@ -1,6 +1,9 @@
 #pragma once
 
 #include <type_traits>
+#include <climits>
+#include <cstdint>
+#include <string>
 
 namespace ac::buffer
 {

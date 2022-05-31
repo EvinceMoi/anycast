@@ -1,5 +1,6 @@
 
 include(CheckCXXCompilerFlag)
+include(CheckCXXLinkerFlag)
 include(CheckIncludeFileCXX)
 include(CheckIPOSupported) # for lto
 
@@ -34,10 +35,14 @@ endif()
 if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 	add_compile_options($<$<COMPILE_LANGUAGE:CXX>:-stdlib=libc++>)
     add_link_options(-stdlib=libc++)
+
+	check_linker_flag(CXX "-rtlib=compiler-rt -libunwind=libunwind" HAS_COMPILER_RT_SUPPORTED)
+	if (HAS_COMPILER_RT_SUPPORTED)
+		message(STATUS ">> has compiler-rt support")
+		add_link_options(-rtlib=compiler-rt -unwindlib=libunwind)
+	endif()
     # add_compile_options($<$<COMPILE_LANGUAGE:CXX>:-stdlib=libc++>)
     # add_link_options($<$<COMPILE_LANGUAGE:CXX>:-stdlib=libc++>)
-
-    add_link_options(-rtlib=compiler-rt)
 endif()
 
 if (COMPILER_HAS_LTO_SUPPORT)

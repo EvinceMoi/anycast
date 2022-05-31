@@ -987,6 +987,9 @@ class empty_logger___
 	empty_logger___& operator=(const empty_logger___&) = delete;
 
 public:
+
+	empty_logger___() = default;
+
 	template <class T>
 	empty_logger___& operator<<(T const&/*v*/)
 	{
